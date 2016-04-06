@@ -18,12 +18,16 @@ class GradientDescent  {
    }   
    
    class linearHypothesis {
-      // h(x) = ax + b
-      double slope, yint;
+      // h(x) = mx + b
+      public double m, b;
       
       public linearHypothesis ( double a, double b ) {
-         this.slope = a;
-         this.yint = b;
+         this.m = a;
+         this.b = b;
+      }
+      
+      public double evalAt( double x ) {
+         return this.m * x + this.b;
       }
    }
    
@@ -42,6 +46,19 @@ class GradientDescent  {
    
    public GradientDescent (List<Point> points) {
       this.points = points;
+   }
+   
+   public double CostFunctionLeastSquares(List<Point> points, linearHypothesis mxb) {
+      double sum = 0;
+      int numTrainingExamples = points.size();
+
+      for ( int i = 0 ; i < numTrainingExamples; i ++ ) {
+         double yprime = mxb.evalAt(points.get(i).x) - points.get(i).y;
+         sum += yprime*yprime;
+      }
+
+      sum = sum/(2*numTrainingExamples);
+      return sum;
    }
    
    public linearHypothesis getLineOfBestFit() {
