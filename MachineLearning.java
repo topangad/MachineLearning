@@ -5,6 +5,9 @@ import java.util.*;
 import java.awt.Color;
 import java.io.IOException;
 
+import java.awt.geom.*;
+import javax.swing.*;
+
 class GradientDescent  {
    private List<Point> points;
    
@@ -126,5 +129,13 @@ class GradientDescent  {
 					marker(Plot.Marker.DIAMOND).
 					markerColor(Color.GREEN).
 					color(Color.BLACK));
+        
+        //run the default java applet
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.add(new GraphingData());
+        f.setSize(400,400);
+        f.setLocation(200,200);
+        f.setVisible(true);
    }   
 }
