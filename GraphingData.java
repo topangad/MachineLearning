@@ -5,12 +5,19 @@ import java.awt.geom.*;
 import javax.swing.*;
  
 public class GraphingData extends JPanel {
-    int[] data = {
+    private int[] data = {
         21, 14, 18, 03, 86, 88, 74, 87, 54, 77,
         61, 55, 48, 60, 49, 36, 38, 27, 20, 18
     };
+    
+    private PlotPoint[] points;
+    
+    public GraphingData(PlotPoint[] points) {
+      this.points = points;      
+    }    
+    
     final int PAD = 20;
- 
+        
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
@@ -29,8 +36,16 @@ public class GraphingData extends JPanel {
         for(int i = 0; i < data.length; i++) {
             double x = PAD + i*xInc;
             double y = h - PAD - scale*data[i];
-            g2.fill(new Ellipse2D.Double(x-2, y-2, 4, 4));
+            //g2.fill(new Ellipse2D.Double(x-2, y-2, 4, 4));
         }
+        
+      for(int i = 0; i < points.length; i++) {         
+         Point2D.Double point = new Point2D.Double(points[i].x,points[i].y);
+         g2.fill(new Ellipse2D.Double(
+            PAD +scale*(point.x-2),
+            h - PAD - scale*( point.y-2),
+            4, 4));     
+      }
     }
  
     public int getMax() {

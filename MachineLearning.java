@@ -3,22 +3,14 @@ package MachineLearning;
 import java.util.*;
 
 import java.awt.Color;
+import java.util.Random;
 import java.io.IOException;
 
 import java.awt.geom.*;
 import javax.swing.*;
-
-class GradientDescent  {
-   private List<Point> points;
    
-   class Point {
-      double x,y;
-      
-      public Point(int x, int y) {
-         this.x = x;
-         this.y = y;
-      }     
-   }   
+class GradientDescent  {
+   private List<PlotPoint> points;  
    
    class linearHypothesis {
       // h(x) = mx + b
@@ -47,14 +39,14 @@ class GradientDescent  {
       }
    }
    
-   public GradientDescent (List<Point> points) {
+   public GradientDescent (List<PlotPoint> points) {
       this.points = points;
    }
    
    //y = mx + b abbr = mxb, returns the derivative of the cost function
    //evaluated at J( theta1, theta2)s
    public double CostFunctionLeastSquares(
-      List<Point> points,
+      List<PlotPoint> points,
       linearHypothesis mxb,
       int derivativeParams
    ){   
@@ -129,11 +121,20 @@ class GradientDescent  {
 					marker(Plot.Marker.DIAMOND).
 					markerColor(Color.GREEN).
 					color(Color.BLACK));
+         
+        int n = 20;
+        
+        Random ran = new Random( 1455 ) ;
+        List<PlotPoint> temppoints = new ArrayList<PlotPoint>();
+        for ( int i = 0 ; i < n ; i++ ) {
+            temppoints.add (new PlotPoint( i, i*i));
+        }        
+        PlotPoint[] arr = temppoints.toArray(new PlotPoint[temppoints.size()]);
         
         //run the default java applet
         JFrame f = new JFrame();
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.add(new GraphingData());
+        f.add(new GraphingData(arr));
         f.setSize(400,400);
         f.setLocation(200,200);
         f.setVisible(true);
