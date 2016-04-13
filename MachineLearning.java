@@ -16,12 +16,12 @@ class GradientDescent  {
       // h(x) = mx + b
       public double m, b;
       
-      public linearHypothesis ( double a, double b ) {
+      public linearHypothesis (double a, double b) {
          this.m = a;
          this.b = b;
       }
       
-      public double evalAt( double x ) {
+      public double evalAt(double x) {
          return this.m * x + this.b;
       }
    }
@@ -77,6 +77,10 @@ class GradientDescent  {
       
       // if case 1 or 2, fomula for derivaive calculations is 1/m instead of 1/2m     
       return ( derivativeParams != 0 ) ? sum*2 : sum ;
+   }
+   
+   public void MultipleVariableGradientDescent() {
+      //TODO
    }
    
    public linearHypothesis getLineOfBestFit(double theta1, double theta2) {
