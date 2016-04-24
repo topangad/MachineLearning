@@ -144,3 +144,4 @@ class GradientDescent  {
         f.setVisible(true);
    }   
 }
+
