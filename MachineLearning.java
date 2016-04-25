@@ -111,21 +111,6 @@ class GradientDescent  {
    }
    
    public static void main( String [] args) {
-      Plot plot = Plot.plot(Plot.plotOpts().
-				title("Gradient Descent Algorithm with 1 Var").
-				legend(Plot.LegendFormat.BOTTOM)).
-			xAxis("x", Plot.axisOpts().
-				range(0, 5)).
-			yAxis("y", Plot.axisOpts().
-				range(0, 5)).
-			series("Data", Plot.data().
-				xy(1, 2).
-				xy(3, 4),
-				Plot.seriesOpts().
-					marker(Plot.Marker.DIAMOND).
-					markerColor(Color.GREEN).
-					color(Color.BLACK));
-         
         int n = 20;
         
         Random ran = new Random( 1455 ) ;

@@ -33,13 +33,12 @@ public class GraphingData extends JPanel {
       private static final Stroke GRAPH_STROKE = new BasicStroke(3f);
       private static final int GRAPH_POINT_WIDTH = 12;
       private static final int Y_HATCH_CNT = 10;
-      private List<Integer> scores;  
-
+      private List<Integer> scores;     
 
     private PlotPoint[] points;
     
     private List<Integer> convertDataIntoInt( int [] data) {
-      List<Integer> ret = null;
+      List<Integer> ret = new ArrayList<Integer>();
       for( int i = 0; i < this.data.length ;i ++ ) {
          ret.add(new Integer( data [i])) ;         
       }
